@@ -1,0 +1,42 @@
+version: 0.0.1
+type: plugin
+author: flexai
+name: flexai
+label:
+  en_US: FlexAI
+description:
+  en_US: Open-weight LLMs and embeddings served by FlexAI through an OpenAI-compatible API, with tool calling, vision and reasoning models.
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission:
+    model:
+      enabled: true
+      llm: true
+      text_embedding: true
+      rerank: false
+      tts: false
+      speech2text: false
+      moderation: false
+plugins:
+  models:
+    - provider/flexai.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: 1.0.0
+created_at: 2026-10-07T00:00:00-07:00
+privacy: PRIVACY.md
+repo: https://github.com/flexaihq/dify-flexai
+contact: support@flex.ai
+network:
+  domains:
+    - api.flex.ai
+verified: false

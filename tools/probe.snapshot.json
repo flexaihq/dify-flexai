@@ -1,0 +1,164 @@
+[
+ {
+  "id": "DeepSeek-V4.1-Flash",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "DeepSeek-V4-Flash-0731",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "gemma-4-26B-A4B-it",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "GLM-4.5-Air-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "GLM-5.2",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "GLM-5.3-Flash",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "gpt-oss-120b",
+  "chat": true,
+  "tool_calls": 1,
+  "stream_tool": true
+ },
+ {
+  "id": "gpt-oss-20b",
+  "chat": true,
+  "tool_calls": 1,
+  "stream_tool": true
+ },
+ {
+  "id": "Meta-Llama-3.1-8B-Instruct-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "Llama-3.3-70B-Instruct-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "MiniMax-M2.7",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "Mistral-Nemo-Instruct-2407-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "Muse-Glimmer-30B",
+  "chat": true,
+  "tool_calls": 1,
+  "stream_tool": true,
+  "vision": false
+ },
+ {
+  "id": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+  "chat": true,
+  "tool_calls": 1,
+  "stream_tool": true
+ },
+ {
+  "id": "PaddleOCR-VL",
+  "chat": true,
+  "tool_calls": "ERR Error code: 400 - {'error': {'message': '\"auto\" tool choice requires --enable-au",
+  "stream_tool": "ERR Error code: 400 - {'error': {'message': '\"auto\" tool choice requires --enable-au",
+  "vision": false
+ },
+ {
+  "id": "Qwen3.5-9B",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Qwen3.6-27B-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Qwen3.8-27B",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Qwen3-8B-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "Qwen3.8-Flash-Next",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Step-3.7-Flash",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "gemma-4-31b-it",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Qwen3-Coder-30B-A3B-Instruct-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ },
+ {
+  "id": "Qwen3.6-35B-A3B-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "Qwen3-30B-A3B-Thinking-2507-FP8",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true
+ }
+]

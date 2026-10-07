@@ -1,0 +1,110 @@
+provider: flexai
+label:
+  en_US: FlexAI
+description:
+  en_US: Open-weight LLMs and embeddings served by FlexAI through an OpenAI-compatible API.
+icon_small:
+  en_US: icon.svg
+icon_small_dark:
+  en_US: icon-dark.svg
+icon_large:
+  en_US: icon.svg
+icon_large_dark:
+  en_US: icon-dark.svg
+background: "#E6ECF8"
+help:
+  title:
+    en_US: Get your API key from FlexAI
+  url:
+    en_US: https://platform.flex.ai/?utm_source=dify&utm_medium=marketplace&utm_campaign=dify_plugin
+supported_model_types:
+  - llm
+  - text-embedding
+configurate_methods:
+  - predefined-model
+  - customizable-model
+provider_credential_schema:
+  credential_form_schemas:
+    - variable: api_key
+      label:
+        en_US: API Key
+      type: secret-input
+      required: true
+      placeholder:
+        en_US: Enter your FlexAI API key (sk-...)
+model_credential_schema:
+  model:
+    label:
+      en_US: Model ID
+    placeholder:
+      en_US: A model ID returned by GET https://api.flex.ai/v1/models
+  credential_form_schemas:
+    - variable: api_key
+      label:
+        en_US: API Key
+      type: secret-input
+      required: true
+      placeholder:
+        en_US: Enter your FlexAI API key (sk-...)
+    - variable: context_size
+      label:
+        en_US: Context size
+      type: text-input
+      required: true
+      default: "131072"
+      placeholder:
+        en_US: The model's context_length from GET /v1/models
+    - variable: max_tokens_to_sample
+      label:
+        en_US: Upper bound for max tokens
+      type: text-input
+      default: "8192"
+      show_on:
+        - variable: __model_type
+          value: llm
+    - variable: function_calling_type
+      label:
+        en_US: Tool calling
+      type: select
+      required: false
+      default: tool_call
+      show_on:
+        - variable: __model_type
+          value: llm
+      options:
+        - value: tool_call
+          label:
+            en_US: Supported
+        - value: no_call
+          label:
+            en_US: Not supported
+    - variable: vision_support
+      label:
+        en_US: Vision (image input)
+      type: select
+      required: false
+      default: not_support
+      show_on:
+        - variable: __model_type
+          value: llm
+      options:
+        - value: support
+          label:
+            en_US: Supported
+        - value: not_support
+          label:
+            en_US: Not supported
+models:
+  llm:
+    position: models/llm/_position.yaml
+    predefined:
+      - models/llm/*.yaml
+  text_embedding:
+    predefined:
+      - models/text_embedding/*.yaml
+extra:
+  python:
+    provider_source: provider/flexai.py
+    model_sources:
+      - models/llm/llm.py
+      - models/text_embedding/text_embedding.py
