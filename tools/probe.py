@@ -10,14 +10,19 @@ tool calls, a streamed tool call, and whether an image is actually read.
 """
 import json, os, base64, concurrent.futures as cf, struct, zlib
 from openai import OpenAI
-c = OpenAI(base_url="https://api.flex.ai/v1", api_key=os.environ["FLEXAI_API_KEY"], timeout=90, max_retries=1)
+c = OpenAI(base_url="https://api.flex.ai/v1", api_key=os.environ["FLEXAI_API_KEY"], timeout=120, max_retries=6)  # SDK backs off on 429/5xx; the key is limited to 100 RPM
 d = json.load(open("tools/v1-models.snapshot.json"))["data"]
 chat = [m for m in d if (m.get("output_modalities") or []) == ["text"] and "text" in (m.get("input_modalities") or [])]
 tools = [{"type":"function","function":{"name":"get_weather","description":"Get weather for a city","parameters":{"type":"object","properties":{"city":{"type":"string"}},"required":["city"]}}}]
+# Some vision encoders cannot read tiny images: Muse Glimmer answered
+# "unknown" for a 16x16 fill and read a 512x512 one correctly.
+SIZE = 512
+
+
 def png(r,g,b):
-    raw=b"".join(b"\x00"+bytes([r,g,b])*16 for _ in range(16))
+    raw=b"".join(b"\x00"+bytes([r,g,b])*SIZE for _ in range(SIZE))
     ch=lambda t,dat: struct.pack(">I",len(dat))+t+dat+struct.pack(">I",zlib.crc32(t+dat)&0xffffffff)
-    return b"\x89PNG\r\n\x1a\n"+ch(b"IHDR",struct.pack(">IIBBBBB",16,16,8,2,0,0,0))+ch(b"IDAT",zlib.compress(raw))+ch(b"IEND",b"")
+    return b"\x89PNG\r\n\x1a\n"+ch(b"IHDR",struct.pack(">IIBBBBB",SIZE,SIZE,8,2,0,0,0))+ch(b"IDAT",zlib.compress(raw))+ch(b"IEND",b"")
 def probe(m):
     mid=m["id"]; r={"id":mid}
     try:
@@ -38,17 +43,24 @@ def probe(m):
         seen = []
         for colour, rgb in (("red", (255, 0, 0)), ("blue", (0, 0, 255))):
             url = "data:image/png;base64," + base64.b64encode(png(*rgb)).decode()
-            try:
-                x = c.chat.completions.create(model=mid, messages=[{"role": "user", "content": [
-                    {"type": "text", "text": "What single color fills this image? Answer with one word only."},
-                    {"type": "image_url", "image_url": {"url": url}}]}], max_tokens=4096)
-                # Reasoning models may think aloud first; judge the final words.
-                seen.append(colour in (x.choices[0].message.content or "").lower()[-40:])
-            except Exception:
-                seen.append(False)
-        r["vision"] = all(seen)
+            err = None
+            for _attempt in range(2):  # one retry: a transient error is not a capability verdict
+                try:
+                    x = c.chat.completions.create(model=mid, messages=[{"role": "user", "content": [
+                        {"type": "text", "text": "What single color fills this image? Answer with one word only."},
+                        {"type": "image_url", "image_url": {"url": url}}]}], max_tokens=4096)
+                    # Reasoning models may think aloud first; judge the final words.
+                    seen.append(colour in (x.choices[0].message.content or "").lower()[-40:])
+                    err = None
+                    break
+                except Exception as e:
+                    err = "ERR " + str(e)[:80]
+            if err:
+                seen.append(err)
+        errors = [v for v in seen if isinstance(v, str)]
+        r["vision"] = errors[0] if errors else all(seen)
     return r
-with cf.ThreadPoolExecutor(8) as ex:
+with cf.ThreadPoolExecutor(4) as ex:
     res=list(ex.map(probe,chat))
 json.dump(res,open("tools/probe.snapshot.json","w"),indent=1)
 for r in res: print(r)

@@ -112,7 +112,16 @@ def main():
             (EMB_DIR / f"{m['id']}.yaml").write_text(emb_yaml(m))
             continue
         p = probe.get(m["id"])
-        if not p or not isinstance(p.get("tool_calls"), int) or p["tool_calls"] < 1:
+        if p and isinstance(p.get("vision"), str):
+            raise SystemExit(f"{m['id']}: the vision probe errored ({p['vision']}); re-run tools/probe.py")
+        if not p:
+            continue
+        tc = p.get("tool_calls")
+        if isinstance(tc, str) and "Error code: 400" not in tc:
+            # Only a 400 is the server rejecting the capability; a 429, 5xx or
+            # timeout says nothing about the model, so never publish from it.
+            raise SystemExit(f"{m['id']}: the tool probe errored ({tc}); re-run tools/probe.py")
+        if not isinstance(tc, int) or tc < 1:
             continue
         (LLM_DIR / f"{m['id']}.yaml").write_text(llm_yaml(m, p))
         order.append(m["id"])

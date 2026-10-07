@@ -95,13 +95,18 @@ def collect(gen):
     return text, calls
 
 
+# Some vision encoders cannot read tiny images: Muse Glimmer answered
+# "unknown" for a 16x16 fill and read a 512x512 one correctly.
+SIZE = 512
+
+
 def png(r, g, b):
-    raw = b"".join(b"\x00" + bytes([r, g, b]) * 16 for _ in range(16))
+    raw = b"".join(b"\x00" + bytes([r, g, b]) * SIZE for _ in range(SIZE))
 
     def ch(t, d):
         return struct.pack(">I", len(d)) + t + d + struct.pack(">I", zlib.crc32(t + d) & 0xFFFFFFFF)
 
-    return b"\x89PNG\r\n\x1a\n" + ch(b"IHDR", struct.pack(">IIBBBBB", 16, 16, 8, 2, 0, 0, 0)) + ch(b"IDAT", zlib.compress(raw)) + ch(b"IEND", b"")
+    return b"\x89PNG\r\n\x1a\n" + ch(b"IHDR", struct.pack(">IIBBBBB", SIZE, SIZE, 8, 2, 0, 0, 0)) + ch(b"IDAT", zlib.compress(raw)) + ch(b"IEND", b"")
 
 
 def test_every_yaml_loads_as_a_model_schema():

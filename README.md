@@ -31,7 +31,7 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 | `Meta-Llama-3.1-8B-Instruct-FP8` | 128K | — | yes |
 | `MiniMax-M2.7` | 200K | — | yes |
 | `Mistral-Nemo-Instruct-2407-FP8` | 128K | — | yes |
-| `Muse-Glimmer-30B` | 128K | — | — |
+| `Muse-Glimmer-30B` | 128K | yes | — |
 | `NVIDIA-Nemotron-3.5-Lightning-30B-A3B` | 1M | — | — |
 | `Qwen3-30B-A3B-Thinking-2507-FP8` | 256K | — | yes |
 | `Qwen3-8B-FP8` | 40K | — | yes |
@@ -49,7 +49,7 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 
 Embedding: `bge-m3` (8K context).
 
-Every capability in this table was observed against the live API before release: a tool call, two tool calls in one turn, a streamed tool call, and an image read correctly in two different colours. `tools/generate_models.py` builds the model files from those results, and `tools/probe.py` re-runs the checks. Prices are on [flex.ai/pricing](https://flex.ai/pricing).
+Every capability in this table was observed against the live API before release: a tool call, two tool calls in one turn, a streamed tool call, and a 512×512 image read correctly in two different colours. `tools/generate_models.py` builds the model files from those results, and `tools/probe.py` re-runs the checks. Prices are on [flex.ai/pricing](https://flex.ai/pricing).
 
 ## Credentials
 

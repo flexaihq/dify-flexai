@@ -79,7 +79,7 @@
   "chat": true,
   "tool_calls": 1,
   "stream_tool": true,
-  "vision": false
+  "vision": true
  },
  {
   "id": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
