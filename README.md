@@ -23,9 +23,9 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 | Model | Context | Vision | Parallel tool calls |
 |---|---|---|---|
 | `DeepSeek-V4-Flash-0731` | 1M | — | yes |
-| `DeepSeek-V4.1-Flash` | 1M | yes | yes |
+| `DeepSeek-V4.1-Flash-1017` | 1M | yes | yes |
 | `GLM-4.5-Air-FP8` | 128K | — | yes |
-| `GLM-5.2` | 128K | — | yes |
+| `GLM-5.2` | 1M | — | yes |
 | `GLM-5.3-Flash` | 1M | yes | yes |
 | `Llama-3.3-70B-Instruct-FP8` | 128K | — | yes |
 | `Meta-Llama-3.1-8B-Instruct-FP8` | 128K | — | yes |
@@ -34,7 +34,6 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 | `Muse-Glimmer-30B` | 128K | yes | — |
 | `NVIDIA-Nemotron-3.5-Lightning-30B-A3B` | 1M | — | — |
 | `Qwen3-30B-A3B-Thinking-2507-FP8` | 256K | — | yes |
-| `Qwen3-8B-FP8` | 40K | — | yes |
 | `Qwen3-Coder-30B-A3B-Instruct-FP8` | 256K | — | yes |
 | `Qwen3.5-9B` | 256K | yes | yes |
 | `Qwen3.6-27B-FP8` | 256K | yes | yes |

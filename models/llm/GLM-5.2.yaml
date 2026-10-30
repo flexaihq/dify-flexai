@@ -9,7 +9,7 @@ features:
   - stream-tool-call
 model_properties:
   mode: chat
-  context_size: 131072
+  context_size: 1048576
 parameter_rules:
   - name: temperature
     use_template: temperature
@@ -26,7 +26,7 @@ parameter_rules:
       - text
       - json_object
 pricing:
-  input: "0.5625"
-  output: "1.8"
+  input: "0.7"
+  output: "2.2"
   unit: "0.000001"
   currency: USD
