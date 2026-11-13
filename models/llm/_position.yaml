@@ -5,7 +5,8 @@
 - GLM-5.3-Flash
 - Llama-3.3-70B-Instruct-FP8
 - Meta-Llama-3.1-8B-Instruct-FP8
-- MiniMax-M2.7
+- MiMo-V2.6-Flash-RL
+- MiniMax-M3.1-Flash
 - Mistral-Nemo-Instruct-2407-FP8
 - Muse-Glimmer-30B
 - NVIDIA-Nemotron-3.5-Lightning-30B-A3B
@@ -16,7 +17,6 @@
 - Qwen3.6-35B-A3B-FP8
 - Qwen3.8-27B
 - Qwen3.8-Flash-Next
-- Step-3.7-Flash
 - gemma-4-26B-A4B-it
 - gemma-4-31b-it
 - gpt-oss-120b

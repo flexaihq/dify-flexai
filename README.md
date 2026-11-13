@@ -24,12 +24,17 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 |---|---|---|---|
 | `DeepSeek-V4-Flash-0731` | 1M | — | yes |
 | `DeepSeek-V4.1-Flash-1017` | 1M | yes | yes |
+| `gemma-4-26B-A4B-it` | 256K | yes | yes |
+| `gemma-4-31b-it` | 256K | yes | yes |
 | `GLM-4.5-Air-FP8` | 128K | — | yes |
 | `GLM-5.2` | 1M | — | yes |
 | `GLM-5.3-Flash` | 1M | yes | yes |
+| `gpt-oss-120b` | 128K | — | — |
+| `gpt-oss-20b` | 128K | — | — |
 | `Llama-3.3-70B-Instruct-FP8` | 128K | — | yes |
 | `Meta-Llama-3.1-8B-Instruct-FP8` | 128K | — | yes |
-| `MiniMax-M2.7` | 200K | — | yes |
+| `MiMo-V2.6-Flash-RL` | 1M | yes | yes |
+| `MiniMax-M3.1-Flash` | 1M | yes | yes |
 | `Mistral-Nemo-Instruct-2407-FP8` | 128K | — | yes |
 | `Muse-Glimmer-30B` | 128K | yes | — |
 | `NVIDIA-Nemotron-3.5-Lightning-30B-A3B` | 1M | — | — |
@@ -40,15 +45,10 @@ The models below appear in every model picker: LLM nodes, chatflows, agents and 
 | `Qwen3.6-35B-A3B-FP8` | 256K | yes | yes |
 | `Qwen3.8-27B` | 256K | yes | yes |
 | `Qwen3.8-Flash-Next` | 256K | yes | yes |
-| `Step-3.7-Flash` | 256K | yes | yes |
-| `gemma-4-26B-A4B-it` | 256K | yes | yes |
-| `gemma-4-31b-it` | 256K | yes | yes |
-| `gpt-oss-120b` | 128K | — | — |
-| `gpt-oss-20b` | 128K | — | — |
 
 Embedding: `bge-m3` (8K context).
 
-Every capability in this table was observed against the live API before release: a tool call, two tool calls in one turn, a streamed tool call, and a 512×512 image read correctly in two different colours. `tools/generate_models.py` builds the model files from those results, and `tools/probe.py` re-runs the checks. Prices are on [flex.ai/pricing](https://flex.ai/pricing).
+Every capability in this table was observed against the live API before release: a tool call, two tool calls in one turn, a streamed tool call, and a 512×512 image read correctly in two different colours. `tools/generate_models.py` builds the model files from those results, and `tools/probe.py` re-runs the checks (MiMo-V2.6-Flash-RL and MiniMax-M3.1-Flash were probed on FlexAI's staging endpoint). Prices are on [flex.ai/pricing](https://flex.ai/pricing).
 
 ## Credentials
 

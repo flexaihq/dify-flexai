@@ -56,12 +56,6 @@
   "stream_tool": true
  },
  {
-  "id": "MiniMax-M2.7",
-  "chat": true,
-  "tool_calls": 2,
-  "stream_tool": true
- },
- {
   "id": "Mistral-Nemo-Instruct-2407-FP8",
   "chat": true,
   "tool_calls": 2,
@@ -116,13 +110,6 @@
   "vision": true
  },
  {
-  "id": "Step-3.7-Flash",
-  "chat": true,
-  "tool_calls": 2,
-  "stream_tool": true,
-  "vision": true
- },
- {
   "id": "gemma-4-31b-it",
   "chat": true,
   "tool_calls": 2,
@@ -150,6 +137,20 @@
  },
  {
   "id": "DeepSeek-V4.1-Flash-1017",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "MiMo-V2.6-Flash-RL",
+  "chat": true,
+  "tool_calls": 2,
+  "stream_tool": true,
+  "vision": true
+ },
+ {
+  "id": "MiniMax-M3.1-Flash",
   "chat": true,
   "tool_calls": 2,
   "stream_tool": true,
